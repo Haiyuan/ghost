@@ -111,13 +111,25 @@ if (process.env.OPENSHIFT_MYSQL_DB_HOST != undefined) {
         production: {
             url: 'http://haiyuanzhang.pub',
             mail: {},
-            database: {
+            /*database: {
                 client: 'sqlite3',
                 connection: {
                     filename: path.join(__dirname, '/content/data/ghost.db')
                 },
                 debug: false
-            },
+            },*/
+           // 配置MySQL 数据库
+            database: {
+                client: 'mysql',
+                connection: {
+                    host     : '127.0.0.1',
+                    user     : 'root',
+                    password : 'forlocaltest',
+                    database : 'ghost',
+                    charset  : 'utf8'
+                },
+                debug: false
+            },   
             server: {
                 // Host to be passed to node's `net.Server#listen()`
                 host: process.env.OPENSHIFT_NODEJS_IP,
